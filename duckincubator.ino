@@ -29,6 +29,9 @@
 // create DHT22 instance
 DHT_Unified dht(DATA_PIN, DHT22);
 
+// How often should the temp-humidity be read and uploaded to adafruit in msec
+UpdateFreq = 60000;
+
 // set up the 'temperature' and 'humidity' feeds
 AdafruitIO_Feed *temperature = io.feed("temperature");
 AdafruitIO_Feed *humidity = io.feed("humidity");
@@ -95,6 +98,6 @@ void loop() {
   humidity->save(event.relative_humidity);
 
   // wait 5 seconds (5000 milliseconds == 5 seconds)
-  delay(60000);
+  delay(UpdateFreq);
 
 }
